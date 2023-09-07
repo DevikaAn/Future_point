@@ -1,0 +1,115 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'footerstyle.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <script src="{% static 'jquery.js' %}"></script>
+    <title>Teacher Homepage</title>
+  </head>
+  <body style="background-image:url({% static 'images/k6.jpg' %}); background-repeat:no-repeat;background-size:cover;" >
+
+    <div  class="container-fluid">
+        <div   class="row">
+            <nav class="navbar navbar-dark bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/CFKIDS.jpg' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+        </div>
+<style>
+    .nav a{
+        display:block;
+        position:relative;
+        width:100%;
+        left:13px;
+        border-radius:6%;
+        margin-bottom:5px;
+        background-color:tan;
+
+    }
+    .nav a:hover{
+        display:block;
+        position:relative;
+        width:100%;
+        left:20px;
+        border-radius:6%;
+        margin-bottom:5px;
+        background-color:white!important;
+
+    }
+</style>
+
+        <!--2row two column-->
+        <div  class="row">
+            <div class="col-lg-3 bg-info">
+                <nav class="nav flex-column ">
+  <a class="nav-link bg-warning text-dark active" aria-current="page" href="/tutorapp/home">Home</a>
+
+  <a class="nav-link bg-warning text-dark" href="/tutorapp/uploadnotes">Upload Notes</a>
+  <a class="nav-link bg-warning text-dark" href="/tutorapp/uploadworks">Upload Works </a>
+<a class="nav-link bg-warning text-dark" href="/Minor_Programmer/mpdetailsT">View Student Details </a>
+                    <a class="nav-link bg-warning text-dark" href="/Minor_Programmer/viewminorwork" >View Student Work </a>
+                    <a class="nav-link bg-warning text-dark" href="/tutorapp/tutemail">Email </a>
+                    <a class="nav-link bg-warning text-dark" href="/tutorapp/videoup">video Upload </a>
+                    <a class="nav-link bg-warning text-dark" href="/admin_module/tutnots">Notifications </a>
+                    <a class="nav-link bg-warning text-dark" href="/tutorapp/gmeet">Live Classes </a>
+                    <h4>Meeting Planner</h4>
+                    
+                    <div  class="row">
+                      {{msg}}
+                     
+          
+          
+          
+                      <div class="col-lg-9">
+                        <a href="https://meet.google.com/?pli=1" class="btn btn-info" target="_blank"> Press to Continue</a>
+                        
+          
+                      </div>
+                    
+                    <a class="nav-link bg-warning text-dark" href="/admin_module/logout"><img src="{% static 'images/exit.png' %}" width="80" height="80"> Logout</a>
+
+</nav>
+            </div>
+
+            <div class="col-lg-9">
+              {% for l in tut %}
+               <h3>Welcome, {{l.tname}}</h3>
+               <h5>Department:{{l.dpt}}</h5>
+               {% endfor %}
+     {% block content %}
+
+
+
+                {% endblock %}
+            </div>
+
+        </div>
+    
+    </div>
+    <div class="footer">
+        
+      <p>All contents copyright &copy; YourName. All rights reserved.</p>
+    
+</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+ 
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+  </body>
+</html>

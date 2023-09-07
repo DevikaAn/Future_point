@@ -1,0 +1,79 @@
+{% extends 'minor_homepage.html' %}
+{% load static %}
+ {% block content %}
+<style>
+body {
+
+  background-color: #cccccc;
+}
+</style>
+
+  <div class="container">
+      <div class="row">
+          {% for ls in data %}
+          <div class="col-lg-12">
+              <div class="card text-dark bg-warning mb-3" style="max-width: 100%;">
+    <div class="card-header"> Welcome {{ls.mpname}}</div>
+  <div class="card-body">
+    <nav class="nav flex-column">
+  <p class="nav-link " aria-current="page" ><span> Name: </span> {{ls.mpname}} </p>
+  <p class="nav-link " aria-current="page" ><span>DOB: </span> {{ls.dob}} </p>
+  <p class="nav-link " aria-current="page" ><span> Email: </span> {{ls.email}} </p>
+
+<!--  <p class="nav-link " aria-current="page" >-->
+<!--      <form  method="POST" action="/Minor_Programmer/edt">-->
+<!--        <span> Name</span> {{ls.mpanme}} -->
+<!--   </form>-->
+<!--  </p>-->
+</nav>
+
+  </div>
+
+</div>
+<div class="card text-dark bg-secondary mb-3 " style="max-width: 100%;">
+  <div class="card-header">Details</div>
+  <div class="card-body">
+
+    <nav class="nav flex-column">
+  <p class="nav-link " aria-current="page" ><span>Your Phone No:</span> 
+    <h4 class="h4 text-warning">{{ls.phoneno}} 
+      </h4>
+  </p>
+  <p class="nav-link " aria-current="page" ><span>Address</span> 
+    <textarea name="addrs" class="form-control" cols="25" rows="4" disabled>{{ls.address}}</textarea>
+  </p>
+
+
+
+
+    </nav>
+  </div>
+
+</div>
+
+<div class="card text-dark bg-info mb-3 " style="max-width: 100%;">
+  <div class="card-header">Parent Details</div>
+  <div class="card-body">
+
+    <nav class="nav flex-column">
+  <p class="nav-link " aria-current="page" ><span>Parent Name: </span> {{ls.gn}} </p>
+  <p class="nav-link " aria-current="page" ><span>contact Number: </span> {{ls.gpn}} </p>
+
+
+
+
+    </nav>
+  </div>
+
+</div>
+
+                          <a href="/Minor_Programmer/edit" class="btn btn-info">Edit</a> 
+                          <br>
+                          <br>
+          </div>
+
+          {% endfor %}
+      </div>
+  </div>
+
+{% endblock %}

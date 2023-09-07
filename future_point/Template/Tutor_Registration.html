@@ -1,0 +1,120 @@
+{% extends 'master_homepage.html' %}
+{% load static %}
+ {% block content %}
+<style>
+body {background-color: powderblue;}
+h2   {color:black;}
+</style>
+<div  class="row">
+    <script>
+console.log("working")
+        function cntVal(){
+        console.log("func working")
+             var x=document.getElementById("cnt").value;
+         console.log(x);
+            var dep=document.getElementById("dept").value;
+         
+            //  var g1=document.getElementById("m").checked;
+            // var g2=document.getElementById("f").checked;
+            // var g3=document.getElementById("o").checked;
+            
+            var nam=document.getElementById("nm").value;
+            const rx=/^[a-zA-Z ]+$/;
+            if(!rx.test(nam)){
+                alert("check your name")
+                document.getElementById("nmer").innerHTML="Check your Name!.";
+            }
+            // if(!(g1==true||g2==true || g3==true)){
+            //     alert("Select Gender")
+            //     document.getElementById("error1").innerHTML="Select Gender";
+            //          return false;
+            // }
+          
+            const re=/^[0-9 ]+$/;
+            if(x.length!=10){
+               document.getElementById("cntER").innerHTML="Check your Phone number";
+                alert("Check your  Phone number")
+                return false;
+            }
+            else if(!re.test(x)){
+              document.getElementById("cntER").innerHTML="Only Numerical value";
+                alert("Only Numerical value")
+                return false;
+            }
+            // else{
+            //     document.getElementById("cntER").innerHTML="";
+            //     return true;
+            // }
+
+            if(dep=="select"){
+                alert("Select Department")
+                return false;
+            }
+        }
+    </script>
+    <div class="col-lg-12 table table-warning">
+        <center><b><h2> TEACHER REGISTRATION FORM </h2></b></br>
+            <h2>{{success}}</h2>
+         <form action="/tutorapp/tutorreg" onsubmit="return cntVal()" method="post">
+        <div class="row">
+            {% csrf_token %}
+                     <div class=" form-group col-lg-4">
+                         <label for="nm" class="col-form-label"><sup class="text-danger">*</sup>Teacher Name</label>
+                         <input  class="form-control" id="nm" type="text" name="tname" required>
+                         <div id="nmer" class="text-danger"></div>
+                     </div>
+             <div class=" form-group col-lg-4">
+                <sup class="text-danger">*</sup> Gender:<input type="radio" id="m" name="gender" value="male" required> Male
+                    <input type="radio" name="gender" value="female"  id="f" required> Female
+              <input type="radio" name="gender" value="other" id="o" reqired > Other</br>
+              <div id="error1" class="text-danger"></div>
+             </div>
+
+
+             <div class="form-group col-lg-4">
+                         <label for="ad" class="col-form-label"><sup class="text-danger">*</sup>Address
+                         </label>
+                  <textarea cols="25" rows="4" name="address"></textarea>
+             </div>
+             <div class="form-group col-lg-4">
+                         <label for="cnt" class="col-form-label"><sup class="text-danger">*</sup>Contact Number</label>
+                      <input type="tel" id="cnt" class="form-control" name="phoneno" required>
+                  <div id="cntER" class="text-danger"></div>
+
+             </div>
+             <div class="form-group col-lg-4">
+                <label for="cnt" class="col-form-label"><sup class="text-danger">*</sup>Department</label>
+             <select name="dept" id="dept" class="form-control">
+                 <option value="select">Select Department<option>
+                     {% for l in course %}
+                     <option value="{{l.cname}}">{{l.cname}}</option>
+                     {% endfor %}
+             </select>
+         <div id="selER" class="text-danger"></div>
+
+    </div>
+             <div class="form-group col-lg-4">
+                         <label for="em" class="col-form-label"><sup class="text-danger">*</sup>Email</label>
+                         <input  class="form-control" id="em" type="email" name="email" required>
+                         <div id="emer" class="text-danger"></div>
+                     </div>
+
+
+<br>
+<br>
+ <div class="col-lg-12" align="right">
+ <br>
+             <input type="submit"  class="btn btn-info" value="Register">
+     </div>
+    
+            </div><!--end row-->
+
+         </form>
+         </center>
+
+
+   </div>
+
+
+</div><!--rowend-->
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{%  load static %} 
+{% block content %}
+<br>
+<br>
+<section class="section">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+        <h1>Login Here!</h1>
+        <h2 class="text-danger">{{msg}}</h2>
+        <form action="tutor/login" method="post">
+            {% csrf_token %}
+           
+                   <br>
+                <div class="form-floating">
+                   
+                    <input type="text" name="user" class="form-control" id="user1"  placeholder="Enter Email" required>
+                    <label for="user1">Email</label>
+                  </div>
+                  <br>
+                  <div class="form-floating">
+                    <input type="password"  name="passw" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-outline-dark">login</button>
+            
+                </form>
+
+    </div>
+
+
+<!--Registration-->
+<div class="col-lg-6">
+    <h1>Create New Account Here!</h1>
+    <h2 class="text-danger">{{msg}}</h2>
+    <form action="/tutor/reg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+       
+               <br>
+               <div class="form-floating">
+               
+                <input type="text" name="name" class="form-control" id="fn"  placeholder="Enter Fullname" required>
+                <label for="fn">Fullame</label>
+              </div>
+              <br>
+              <div class="form-floating">
+               
+                <input type="text" name="depart" class="form-control" id="dp"  placeholder="Enter department" required>
+                <label for="dp">Department</label>
+              </div>
+              <br>
+              <div class="form-floating">
+               
+                <input type="file" name="photo" class="form-control" id="age"  placeholder="Age" required>
+                <label for="age">Photo</label>
+              </div>
+              <br>
+              <div class="form-floating">
+               
+                <input type="email" name="email" class="form-control" id="eml"  placeholder="Enter email id" required>
+                <label for="eml">Email</label>
+              </div>
+              <br>
+              
+              <div class="form-floating">
+               
+                <input type="tel" name="contact" class="form-control" id="cont"  placeholder="Enter Mobile" required>
+                <label for="cont">Contact Number</label>
+              </div>
+              <br>
+              <div class="form-floating">
+               
+                <input type="password" name="passw" class="form-control" id="passw"  placeholder="Enter Password" required>
+                <label for="user1">Password</label>
+              </div>
+              <br>
+           
+              
+             
+              
+              <br>
+              <button type="submit" class="btn btn-outline-dark">Submit</button>
+        
+            </form>
+
+</div>
+
+  </div>
+
+</div>
+</section> 
+ 
+
+     
+{% endblock %}        

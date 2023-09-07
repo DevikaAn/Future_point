@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <h1> Sign Up Here!  </h1>
+        <form action="/reg" method="post">
+            {% csrf_token %}
+        <div class="col-lg-12">
+            <div>
+                <label for="nam">Name</label><input type="text" placeholder="" name="name" id="nam">
+               </div>
+               <div>
+                <label for="ag">Age</label><input type="number" placeholder="" name="age" id="ag">
+               </div>
+               <div>
+                <label for="prnt">Parent</label><input type="text" placeholder="" name="parent" id="prnt">
+               </div>
+               <div>
+                <label for="cnt">Contact</label><input type="tel" placeholder="" name="conatct" id="cnt">
+               </div>
+               <div>
+                <label for="eml">Email</label><input type="email" placeholder="" name="email" id="eml">
+               </div>
+               <div>
+                <label for="paswd">Password</label><input type="password" placeholder="" name="password" id="paswd">
+               </div>
+               <div>
+                <label for="pt">Photo</label><input type="image" placeholder="" name="photo" id="pt">
+               </div>
+              
+               <div>
+                <button type="submit">Register</button>
+               </div>
+        
+        </div>
+    </form>
+    </div>
+</div>
+  
+      
+
+</body>
+</html>

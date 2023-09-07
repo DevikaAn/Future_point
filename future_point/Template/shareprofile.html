@@ -1,0 +1,139 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+      <style>
+body {
+
+  background-color: #cccccc;
+}
+</style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Student Homepage</title>
+  </head>
+  <body style="background-image:url({% static 'images/k6.jpg' %}); background-repeat:no-repeat;background-size:cover;">
+    <div  class="container-fluid">
+        <div   class="row">
+            <nav class="navbar navbar-dark bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/CFKIDS.jpg' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      
+    </a>
+  </div>
+</nav>
+        </div>
+<style>
+    .nav a{
+        display:block;
+        position:relative;
+        width:100%;
+        left:20px;
+        border-radius:13%;
+        margin-bottom:6px;
+        background-color:tan;
+
+    }
+    .nav a:hover{
+        display:block;
+        position:relative;
+        width:100%;
+        left:20px;
+        border-radius:6%;
+        margin-bottom:10px;
+        background-color:white;
+
+    }
+</style>
+        <!--2row two column-->
+        <div  class="row">
+            <div class="col-lg-3 bg-info">
+                <nav class="nav flex-column ">
+  <a class="nav-link bg-warning text-dark active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link bg-warning text-dark" href="#" >Notes</a>
+  <a class="nav-link bg-warning text-dark" href="#">Assignments</a>
+  <a class="nav-link bg-warning text-dark" href="#" target="_blank">Program Editors</a>
+                    <a class="nav-link bg-warning text-dark" href="#" target="_blank"> upload Work</a>
+<a class="nav-link bg-warning text-dark" href="#">View Profile </a>
+                    <a class="nav-link bg-warning text-dark" href="#">Share Profile</a>
+                    <a class="nav-link bg-warning text-dark" href="#">Share Appreciation</a>
+                     <a class="nav-link bg-warning text-dark" href="#">Email</a>
+                    <a class="nav-link bg-warning text-dark" href="#">Notifications </a>
+                    <a class="nav-link bg-warning text-dark" href="#"><img src="{% static 'images/exit.png' %}" width="80" height="80"> Logout</a>
+
+</nav>
+            </div>
+
+            <div class="col-lg-9">
+
+
+  <div class="container">
+      <div class="row">
+          {% for ls in data %}
+          <div class="col-lg-12">
+              <div class="card text-dark bg-warning mb-3" style="max-width: 100%;">
+    <div class="card-header"> Welcome {{ls.mpname}}</div>
+  <div class="card-body">
+    <nav class="nav flex-column">
+  <p class="nav-link " aria-current="page" ><span> Name</span> {{ls.mpname}} </p>
+  <p class="nav-link " aria-current="page" ><span>DOB</span> {{ls.dob}} </p>
+  <p class="nav-link " aria-current="page" ><span> Email</span> {{ls.email}} </p>
+
+<!--  <p class="nav-link " aria-current="page" >-->
+<!--      <form  method="POST" action="/Minor_Programmer/edt">-->
+<!--        <span> Name</span> {{ls.mpanme}} -->
+<!--   </form>-->
+<!--  </p>-->
+</nav>
+
+  </div>
+</div>
+<div class="card text-dark bg-info mb-3 " style="max-width: 100%;">
+  <div class="card-header">Parent Details</div>
+  <div class="card-body">
+
+    <nav class="nav flex-column">
+  <p class="nav-link " aria-current="page" ><span>Parent Name</span> {{ls.gn}} </p>
+  <p class="nav-link " aria-current="page" ><span>contact Number</span> {{ls.gpn}} </p>
+
+
+
+
+    </nav>
+  </div>
+
+</div>
+
+           <table class="table">
+               <tr>
+                   <th>Address</th> <th>Phone number</th> <th>Action</th>
+
+
+               </tr>
+               <tr>
+                   <form  method="POST" action="/Minor_Programmer/edit">
+                       {% csrf_token %}
+
+                        <td><textarea name="addrs" class="form-control">{{ls.address}}</textarea></td> <td><input class="form-control" type="text" name="ph" value="{{ls.phoneno}}"></td>
+                       <td>
+                           <input type="text" value="{{ls.id}}" name="mpid" hidden>
+                           <input  class="btn btn-primary" type="submit" value="Edit"> </td>
+  </form>
+               </tr>
+           </table>
+          </div>
+
+          {% endfor %}
+      </div>
+  </div>
+</div>
+
+        </div>
+    </div>

@@ -1,0 +1,30 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student
+    </title>
+</head>
+<body>
+<form method="POST" action="/Minor_Programmer/update">
+    {% csrf_token %}
+    {% for ls in data %}
+    <h3>  Student Name:<input type="text" name="mpname" value="{{ ls.mpname}}"></br></h3>
+
+             <h3>  Address:<input type="text" name="address" value="{{ ls.address}}"></br></h3>
+             <h3>  Phone Number:<input type="text" name="phoneno" value="{{ls.phoneno}}"></br></h3>
+             <h3>  Email:<input type="text" name="email" value="{{ls.email}}"></br></h3>
+             <h3>User Name:<input type="text" name="username" value="{{ls.username}}"></br></h3>
+             <h3> Password:<input type="text" name="passwd" value="{{ls.passwd}}"></br></h3>
+            <h3> DOB:<input type="date" name="dob" value="{{ls.dob}}"></br></h3>
+    <h3><input type="text" name="mpid" value="{{ls.id}}" hidden></br></h3>
+
+             <h3> Parent Name:<input type="text" name="gn" value="{{ls.gn}}"></br></h3>
+             <h3> Parent Contact Number:<input type="text" name="gpn" value="{{ls.gpn}}"></br></h3>
+      <input type="submit"  vlaue="submit">
+
+    {% endfor %}
+</form>
+</body>
+</html>

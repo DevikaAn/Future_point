@@ -1,0 +1,83 @@
+{%  load static %}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Point</title>
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="{% static 'slide_css' %}">
+    <link rel="stylesheet" href="{% static 'home/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/morph.css' %}">
+    <link rel="stylesheet"  type="text/css" href="{% static 'home/mynewStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'home/grid.css' %}">
+    <link rel="stylesheet" href="{% static 'footerstyle.css' %}">
+     <style>
+       .bg{
+            background-color: #80d1b67c!important;
+       }
+       .section{
+        position:relative;
+        top:120px!important;
+    }
+     </style>
+     <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET',"http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=ee719ea0321cefa549a2e8c20ed65544");
+      xhr.send();
+      xhr.onload = () =>{
+          // we can change the data type to json also by
+          const data = JSON.prase(xhr.response);
+          console.log(data);
+      };
+      
+     </script>
+</head>
+<body >
+
+    <!--nav-->
+    <nav class="navbar">
+      <div class="log">
+     Tuturial Point
+      </div>
+      <ul class="navs">
+          <li class="navitem active">
+              <a href="/"> Home</a>
+          </li>
+          <li class="navitem">
+           <a href="/Master_Tutor_Registration/login">HOD</a>
+       </li>
+       <li class="navitem">
+           <a href="admin_module/">Admin</a>
+       </li>
+     
+    <li class="navitem">
+        <a href="/Minor_Programmer/minorpgrmerreg">Student Register</a>
+    </li>
+    <li class="navitem">
+        <a href="/Minor_Programmer">Student</a>
+    </li>
+    
+ 
+    <li class="navitem">
+        <a href="/tutorapp/">Teacher</a>
+    </li>
+      </ul>
+  </nav>
+    <!--/nav-->
+    {% block content %} 
+
+
+
+
+    {% endblock %}
+    <section class="footer">
+        
+        <p>All contents copyright &copy; YourName. All rights reserved.</p>
+      
+      </section>
+  <!--js-->  
+  <script src="{% static 'home/dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

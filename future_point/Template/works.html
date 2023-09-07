@@ -1,0 +1,27 @@
+{% extends 'minor_homepage.html' %}
+{% load static %}
+ {% block content %}
+<table class="table table-striped table-success">
+    <tr>
+        <th> Title</th>
+
+        <th>Due Date</th>
+        <th>Assignment</th>
+
+
+    </tr>
+    {% for ls in data %}
+      <tr>
+          <td>{{ls.wt}}</td>
+          <td id="wdt">{{ls.wdt}}</td>
+          <script>
+
+          </script>
+           <td><a href="/tutorapp/download_file?filename={{ls.notes}}" target="_blank"><input type="button"  class="btn btn-info" value="Download Questions"></a></td>
+      </tr>
+
+
+ {% endfor %}
+</table>
+
+{% endblock %}

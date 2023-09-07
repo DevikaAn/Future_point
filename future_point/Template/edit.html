@@ -1,0 +1,27 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="/tutorapp/update">
+    {% csrf_token %}
+    {% for ls in data %}
+    <h3> Enter  Teacher Name:<input type="text" name="tname" value="{{ ls.tname}}"></br></h3>
+    <input type="text" hidden name="idno" value="{{ ls.id}}">
+             <h3> Enter Address:<input type="text" name="address" value="{{ ls.address}}"></br></h3>
+             <h3> Enter Phone Number:<input type="text" name="phoneno" value="{{ls.phoneno}}"></br></h3>
+             <h3> Enter  Email:<input type="text" name="email" value="{{ls.email}}"></br></h3>
+             <h3>Enter User Name:<input type="text" name="username" value="{{ls.username}}"></br></h3>
+             <h3>Enter Password:<input type="text" name="passwd" value="{{ls.passwd}}"></br></h3>
+             <h3>Enter Department:<input type="text" name="dpt" value="{{ls.dpt}}"></br></h3>
+             <h3>Enter Designation:<input type="text" name="desi" value="{{ls.desi}}"></br></h3>
+             <h3>Gender:<input type="text" name="gender" ></br></h3>
+      <input type="submit"  vlaue="submit">
+
+    {% endfor %}
+</form>
+</body>
+</html>

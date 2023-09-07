@@ -1,0 +1,102 @@
+{% extends 'dashboard.html' %}
+
+{%  load static %} 
+{% block content %}
+
+
+   
+<div class="row ">
+    <h1>{{qno}}</h1>
+ <h2>{{msg}}</h2>
+
+
+    <table class="table table-info">
+        <tr>
+            <th>
+              Question
+            </th>
+            <th>
+                Option A
+            </th>
+            <th>
+                Option B
+            </th>
+            <th>
+                Option C
+            </th>
+            <th>
+                Option D
+            </th>
+            <th>
+               Answer
+            </th>
+
+        </tr>
+        <form action="/tutor/question" method="post">
+            {% csrf_token %}
+         <tr>
+            <td>
+                <label for="ques"></label>
+               <input type="text" placeholder="enter question" id="ques" name="quest">
+               
+            </td>
+             <td>
+                 <label for="o1"></label>
+                <input type="text" placeholder="enter option 1" id="o1" name="opt1">
+                click to select as answer<input type="radio" value="opt1" name="ans">
+              </td>
+            <td>
+                <label for="o2"></label>
+                <input type="text" placeholder="enter option 2" id="o2" name="opt2">
+                click to select as answer<input type="radio" value="opt2" name="ans">
+            </td>
+                <td>
+                    <label for="o3"></label>
+                    <input type="text" placeholder="enter option 3" name="opt3" id="o3">
+                    click to select as answer<input type="radio" value="opt3" name="ans">
+                </td>   
+                  
+                    <td>
+                        <label for="ans"></label>
+                        <input type="text" placeholder="enter option 4" id="o4" name="opt4">
+                        click to select as answer<input type="radio" value="opt4" name="ans">
+                    </td>
+         </tr>
+         <tr>
+             <td>
+        <button type="submit">Submit </button>
+        </td>
+        </tr>
+    </form>
+   
+    </table>
+</div> 
+<div class="row">
+    {% for ls in data %} 
+     <div class="row">
+     <div class="col-auto">
+      <textarea>
+        {{ls.ques}}
+      </textarea>  
+      
+
+     </div>
+     <div class="col-auto">
+      
+          {{ls.opt1}}
+          {{ls.opt2}}
+          {{ls.opt3}}
+          {{ls.opt4}}
+          Answer {{ls.ans}}
+        
+        
+  
+       </div>
+    </div>
+    {% endfor %}
+</div>
+ 
+
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'tutor_homepage.html' %} 
+{% load static %}
+ {% block content %}
+<table class="table table-striped table-success">
+    <tr>
+        <th>Student Name</th>
+        <th>Course</th>
+        
+        <th>Assignment Name</th>
+        <th>Date</th>
+        <th>Minor Work</th>
+        <th>Delete</th>
+
+
+    </tr>
+    {% for ls in data %}
+      <tr>
+          <td>{{ls.stdname}}</td>
+          <td>{{ls.stdcrs}}</td>
+        
+          <td>{{ls.an}}</td>
+          <td>{{ls.adt}}</td>
+
+          <td><a href="/tutorapp/download_file?filename={{ls.assignment}}" target="_blank"><input type="submit"  class="btn btn-info" value="Download Minor Work"></a></td>
+          <td>
+            <script>
+                function deleteminwork(){
+                    var cnf=confirm("Are your Sure ?")
+                    
+                    if(cnf==true){
+                       
+                        window.location.href="/Minor_Programmer/deleteminwork?minwrkid={{ls.id}}";
+                    }
+                    
+                }
+            </script>
+          
+                <button class="btn btn-danger" onclick="deleteminwork()">Delete</button>
+          
+          </td>
+      </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
